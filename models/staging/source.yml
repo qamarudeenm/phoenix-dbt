@@ -1,0 +1,10 @@
+sources:
+  - name: ares
+    database: raw
+    schema: ecommerce
+
+    tables:
+      - name: customer_orders
+        description: Table that stores all customer orders
+   
+
