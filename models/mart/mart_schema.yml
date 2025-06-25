@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: Dimension table for unique products, with generated product_id
+    columns:
+      - name: product_id
+        description: Surrogate key for the product (category + name)
+        tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: Name of the product
+      - name: product_category
+        description: Category under which the product falls
+
+  - name: dim_customer
+    description: Dimension table for customers
+    columns:
+      - name: customer_id
+        description: Natural key for the customer
+        tests:
+          - not_null
+          - unique
+      - name: customer_key
+        description: Surrogate key for customer_id
+
+  - name: dim_date
+    description: Calendar dimension table generated using dbt_utils.date_spine
+    columns:
+      - name: date
+        description: Actual date value
+        tests:
+          - not_null
+          - unique
+      - name: date_id
+        description: Integer-formatted surrogate key for joining
+      - name: day
+        description: Day of the month
+      - name: week
+        description: ISO week number
+      - name: month
+        description: Month number
+      - name: quarter
+        description: Quarter of the year
+      - name: year
+        description: Year
+      - name: month_str
+        description: Formatted month (YYYY-MM)
+      - name: date_str
+        description: Formatted date (YYYY-MM-DD)
+
+  - name: fct_orders
+    description: Fact table for customer order line items including financial metrics and flags
+    columns:
+      - name: order_line_id
+        description: Surrogate key for the order line (order + product)
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: Natural order ID
+      - name: customer_id
+        description: Natural key for the customer
+      - name: product_id
+        description: Surrogate key for the product
+      - name: date_id
+        description: Surrogate key for the order date
+      - name: quantity
+        description: Number of units purchased
+      - name: gross_revenue
+        description: Revenue before discount
+      - name: discount_value
+        description: Total discount amount applied
+      - name: net_revenue
+        description: Final revenue after discount
+      - name: is_discounted
+        description: Boolean flag indicating discount was applied
+      - name: is_delivered
+        description: Boolean flag for delivered orders
+      - name: is_cancelled
+        description: Boolean flag for cancelled orders
+      - name: is_returned
+        description: Boolean flag for returned orders
+      - name: order_date
+        description: Date the order was placed
+      - name: order_month_str
+        description: Formatted month for reporting
+      - name: order_year
+        description: Year the order was placed
+      - name: record_loaded_at
+        description: Timestamp the record was loaded into the warehouse

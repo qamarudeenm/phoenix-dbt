@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: rpt_order_trends
+    description: Shows monthly trends in number of orders and net revenue
+    columns:
+      - name: order_month_str
+        description: Reporting month in YYYY-MM format
+      - name: total_orders
+        description: Count of unique orders placed in the month
+      - name: total_revenue
+        description: Sum of net revenue from all orders in the month
+
+  - name: rpt_return_rate_by_category
+    description: Shows return rates by product category
+    columns:
+      - name: product_category
+        description: Name of the product category
+      - name: total_orders
+        description: Number of orders in the category
+      - name: returned_orders
+        description: Number of returned orders in the category
+      - name: return_rate_percent
+        description: Percentage of returned orders in the category
+
+  - name: rpt_avg_quantity_per_order
+    description: Shows average quantity of items per order
+    columns:
+      - name: order_id
+        description: Unique order identifier
+      - name: avg_quantity_per_order
+        description: Average number of items in each order
+
+  - name: rpt_customer_retention_proxy
+    description: Approximates customer retention based on repeat purchases
+    columns:
+      - name: total_customers
+        description: Total number of customers who placed orders
+      - name: returning_customers
+        description: Number of customers who placed more than one order
+      - name: return_rate_percent
+        description: Percentage of customers who made repeat purchases
+
+  - name: rpt_category_monthly_growth
+    description: Tracks monthly revenue growth per product category
+    columns:
+      - name: product_category
+        description: Name of the product category
+      - name: order_month_str
+        description: Reporting month in YYYY-MM format
+      - name: monthly_revenue
+        description: Total net revenue for the category in the month

@@ -1,10 +1,8 @@
+version: 2
+
 sources:
-  - name: ares
+  - name: order_data
     database: raw
     schema: ecommerce
-
     tables:
       - name: customer_orders
-        description: Table that stores all customer orders
-   
-
