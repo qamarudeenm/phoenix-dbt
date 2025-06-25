@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: order_data
+    database: raw
+    schema: ecommerce
+    tables:
+      - name: customer_orders
