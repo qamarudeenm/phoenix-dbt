@@ -1,0 +1,24 @@
+models:
+  - name: stg_customer_orders
+    description: Cleaned and transformed version of customer orders from the source system
+    columns:
+      - name: order_id
+        description: Unique identifier for the order
+      - name: customer_id
+        description: ID of the customer placing the order
+      - name: order_date
+        description: Cleaned order date as a date type
+      - name: product_id
+        description: Surrogate key generated from category and product name
+      - name: product_category
+        description: Category of the purchased product
+      - name: product_name
+        description: Name of the purchased product
+      - name: quantity
+        description: Number of units ordered
+      - name: price_per_unit
+        description: Price for a single unit of the product
+      - name: discount_applied
+        description: Discount applied to the order line
+      - name: delivery_status
+        description: Current delivery status
