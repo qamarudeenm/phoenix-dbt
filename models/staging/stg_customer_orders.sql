@@ -12,8 +12,8 @@ with source as (
         quantity,
         price_per_unit,
         discount_applied,
-        delivery_status,
-        (quantity * price_per_unit * (1 - discount_applied)) as total_order_value
+        delivery_status
+        
     from {{ source('order_data', 'customer_orders') }}
 
 )
