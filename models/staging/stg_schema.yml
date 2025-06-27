@@ -17,8 +17,8 @@ models:
       - name: quantity
         description: Number of units ordered
       - name: price_per_unit
-        description: Price for a single unit of the product
-      - name: discount_applied
+      #   description: Price for a single unit of the product
+      # - name: discount_applied
         description: Discount applied to the order line
       - name: delivery_status
         description: Current delivery status
